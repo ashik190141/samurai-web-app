@@ -20,12 +20,14 @@ import InfoIcon from "@mui/icons-material/Info";
 import LoginIcon from "@mui/icons-material/Login";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import img from '../assets/logo.png'
+import { Link, Outlet } from "react-router-dom";
+import { useState } from "react";
 
 const drawerWidth = 240;
 
-function NavigationBar({children}) {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
+function NavigationBar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -52,14 +54,16 @@ function NavigationBar({children}) {
       </div>
       <Divider />
       <List>
-        <ListItem key="Home" disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <HomeIcon></HomeIcon>
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItemButton>
-        </ListItem>
+        <Link to="/">
+          <ListItem key="Home" disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <HomeIcon></HomeIcon>
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
       </List>
       <List>
         <ListItem key="about" disablePadding>
@@ -72,24 +76,28 @@ function NavigationBar({children}) {
         </ListItem>
       </List>
       <List>
-        <ListItem key="login" disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LoginIcon></LoginIcon>
-            </ListItemIcon>
-            <ListItemText primary="Login" />
-          </ListItemButton>
-        </ListItem>
+        <Link to="/login">
+          <ListItem key="login" disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <LoginIcon></LoginIcon>
+              </ListItemIcon>
+              <ListItemText primary="Login" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
       </List>
       <List>
-        <ListItem key="registration" disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LockOpenIcon></LockOpenIcon>
-            </ListItemIcon>
-            <ListItemText primary="Registration" />
-          </ListItemButton>
-        </ListItem>
+        <Link to="/register">
+          <ListItem key="registration" disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <LockOpenIcon></LockOpenIcon>
+              </ListItemIcon>
+              <ListItemText primary="Registration" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
       </List>
     </div>
   );
@@ -166,7 +174,7 @@ function NavigationBar({children}) {
         }}
       >
         <Toolbar />
-        {children}
+        <Outlet></Outlet>
       </Box>
     </Box>
   );
