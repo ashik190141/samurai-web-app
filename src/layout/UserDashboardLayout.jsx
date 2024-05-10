@@ -22,10 +22,11 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import img from '../assets/logo.png'
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
+import ReportIcon from "@mui/icons-material/Report";
 
 const drawerWidth = 240;
 
-function NavigationBar() {
+function UserDashboardLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -66,38 +67,14 @@ function NavigationBar() {
         </Link>
       </List>
       <List>
-        <ListItem key="about" disablePadding>
+        <ListItem key="issue" disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <InfoIcon></InfoIcon>
+              <ReportIcon></ReportIcon>
             </ListItemIcon>
-            <ListItemText primary="About" />
+            <ListItemText primary="Report Issue" />
           </ListItemButton>
         </ListItem>
-      </List>
-      <List>
-        <Link to="/login">
-          <ListItem key="login" disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <LoginIcon></LoginIcon>
-              </ListItemIcon>
-              <ListItemText primary="Login" />
-            </ListItemButton>
-          </ListItem>
-        </Link>
-      </List>
-      <List>
-        <Link to="/register">
-          <ListItem key="registration" disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <LockOpenIcon></LockOpenIcon>
-              </ListItemIcon>
-              <ListItemText primary="Registration" />
-            </ListItemButton>
-          </ListItem>
-        </Link>
       </List>
     </div>
   );
@@ -180,7 +157,7 @@ function NavigationBar() {
   );
 }
 
-NavigationBar.propTypes = {
+UserDashboardLayout.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * Remove this when copying and pasting into your project.
@@ -188,4 +165,4 @@ NavigationBar.propTypes = {
   window: PropTypes.func,
 };
 
-export default NavigationBar;
+export default UserDashboardLayout;

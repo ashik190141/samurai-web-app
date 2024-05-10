@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from '../../utils/userLogin';
+import Swal from "sweetalert2";
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -10,6 +11,7 @@ const Login = () => {
       handleSubmit,
       formState: { errors },
     } = useForm();
+    const navigate = useNavigate();
 
     const handleLogin = async(data) => {
         setShow(true);
@@ -24,7 +26,7 @@ const Login = () => {
                   confirmButtonText: "OK",
                 }).then((result) => {
                   if (result.isConfirmed) {
-                    
+                    navigate('/dashboard')
                   }
                 });
             }
@@ -86,7 +88,7 @@ const Login = () => {
                     <p className="text-left text-lg text-white font-normal">
                       New?
                     </p>
-                    <Link href="/register">
+                    <Link to="/register">
                       <p className="text-right text-lg text-white font-normal link link-hover">
                         Go to Register
                       </p>

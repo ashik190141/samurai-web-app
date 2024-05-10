@@ -5,21 +5,31 @@ import * as React from "react";
 import './index.css';
 import Login from './Authetication/Login/Login';
 import Home from './Home/Home';
+import Registration from "./Authetication/Registration/Registration";
+import UserDashboardLayout from "./layout/UserDashboardLayout";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     children: [
       {
-        path: 'login',
-        element: <Login></Login>
+        path: "login",
+        element: <Login></Login>,
       },
       {
-        path: '/',
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "register",
+        element: <Registration></Registration>,
       }
-    ]
+    ],
   },
+  {
+    path: "/dashboard",
+    element: <UserDashboardLayout></UserDashboardLayout>
+  }
 ]);
 
 
