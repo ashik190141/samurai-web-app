@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import * as ReactDOM from "react-dom/client";
 import * as React from "react";
-
+import './index.css';
 const router = createBrowserRouter([
   {
     path: "/",
