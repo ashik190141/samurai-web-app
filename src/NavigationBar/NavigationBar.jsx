@@ -22,12 +22,14 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import img from '../assets/logo.png'
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
+import loggedInUser from "../utils/loggedInUser";
 
 const drawerWidth = 240;
 
 function NavigationBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const loggedIn = loggedInUser();
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -60,7 +62,7 @@ function NavigationBar() {
               <ListItemIcon>
                 <HomeIcon></HomeIcon>
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary="Home" onClick={handleDrawerClose} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -71,7 +73,7 @@ function NavigationBar() {
             <ListItemIcon>
               <InfoIcon></InfoIcon>
             </ListItemIcon>
-            <ListItemText primary="About" />
+            <ListItemText primary="About" onClick={handleDrawerClose} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -82,7 +84,7 @@ function NavigationBar() {
               <ListItemIcon>
                 <LoginIcon></LoginIcon>
               </ListItemIcon>
-              <ListItemText primary="Login" />
+              <ListItemText primary="Login" onClick={handleDrawerClose} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -94,7 +96,10 @@ function NavigationBar() {
               <ListItemIcon>
                 <LockOpenIcon></LockOpenIcon>
               </ListItemIcon>
-              <ListItemText primary="Registration" />
+              <ListItemText
+                primary="Registration"
+                onClick={handleDrawerClose}
+              />
             </ListItemButton>
           </ListItem>
         </Link>

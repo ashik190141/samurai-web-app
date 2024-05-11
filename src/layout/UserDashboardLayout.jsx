@@ -16,19 +16,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
-import InfoIcon from "@mui/icons-material/Info";
-import LoginIcon from "@mui/icons-material/Login";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
 import img from '../assets/logo.png'
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ReportIcon from "@mui/icons-material/Report";
+import QuestionMarkSharpIcon from "@mui/icons-material/QuestionMarkSharp";
+import LogoutSharpIcon from "@mui/icons-material/LogoutSharp";
+import CurrencyExchangeSharpIcon from "@mui/icons-material/CurrencyExchangeSharp";
+import HistoryEduSharpIcon from "@mui/icons-material/HistoryEduSharp";
 
 const drawerWidth = 240;
 
 function UserDashboardLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -38,6 +40,12 @@ function UserDashboardLayout() {
   const handleDrawerTransitionEnd = () => {
     setIsClosing(false);
   };
+    
+
+    const handleLogout = () => {
+        localStorage.removeItem("email")
+        navigate("/")
+    }
 
   const handleDrawerToggle = () => {
     if (!isClosing) {
@@ -61,18 +69,72 @@ function UserDashboardLayout() {
               <ListItemIcon>
                 <HomeIcon></HomeIcon>
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary="Home" onClick={handleDrawerClose} />
             </ListItemButton>
           </ListItem>
         </Link>
       </List>
       <List>
-        <ListItem key="issue" disablePadding>
+        <Link to="/dashboard/issue">
+          <ListItem key="issue" disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <ReportIcon></ReportIcon>
+              </ListItemIcon>
+              <ListItemText
+                primary="Report Issue"
+                onClick={handleDrawerClose}
+              />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+      </List>
+      <List>
+        <Link to="/dashboard/question">
+          <ListItem key="question" disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <QuestionMarkSharpIcon></QuestionMarkSharpIcon>
+              </ListItemIcon>
+              <ListItemText primary="Question" onClick={handleDrawerClose} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+      </List>
+      <List>
+        <Link to="/dashboard/exchange">
+          <ListItem key="question" disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <CurrencyExchangeSharpIcon></CurrencyExchangeSharpIcon>
+              </ListItemIcon>
+              <ListItemText
+                primary="Exchange Idea"
+                onClick={handleDrawerClose}
+              />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+      </List>
+      <List>
+        <Link to="/dashboard/educational">
+          <ListItem key="educational" disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <HistoryEduSharpIcon></HistoryEduSharpIcon>
+              </ListItemIcon>
+              <ListItemText primary="Educational" onClick={handleDrawerClose} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+      </List>
+      <List>
+        <ListItem key="logout" disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <ReportIcon></ReportIcon>
+              <LogoutSharpIcon></LogoutSharpIcon>
             </ListItemIcon>
-            <ListItemText primary="Report Issue" />
+            <ListItemText primary="Logout" onClick={handleLogout} />
           </ListItemButton>
         </ListItem>
       </List>
